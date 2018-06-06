@@ -3,12 +3,12 @@ Get a users steaminventory of any game. It's easy to use!
 
 **Install**
 ```js
-npm install steaminventories --save
+npm install get-steam-inventory --save
 ```
 
 **Import**
 ```js
-const steaminventory = require('steaminventories');
+const steaminventory = require('get-steam-inventory');
 ```
 ## Methods
 ```js
@@ -20,7 +20,7 @@ steaminventory.getinventory(appid, steamid, function(err, callback){});
 
 ### Simple Example
 ```js
-const steaminventory = require('steaminventories');
+const steaminventory = require('get-steam-inventory');
 var steamid = '76561198089544929'; //Set up a variable for the steam64 id.
 steaminventory.getinventory(730, steamid, function(err, data){ //Making the request. 730 is the APPID, Steamid is already declared. Has a callback named 'data'
     if(err) throw err; //If we get an error then display it.
@@ -41,7 +41,7 @@ We recommend this instead:
 
 ### Recommended Example
 ```js
-const steaminventory = require('steaminventories');
+const steaminventory = require('get-steam-inventory');
 var steamid = '76561198089544929';//Set up a variable for the steam64 id.
 steaminventory.getinventory(730, steamid, function(err, data){//Making the request. 730 is the APPID, Steamid is already declared. Has a callback named 'data'
     if(err) throw err; //Display errors if we recieve them.
