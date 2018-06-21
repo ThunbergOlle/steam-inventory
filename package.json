@@ -1,6 +1,6 @@
 {
   "name": "get-steam-inventory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get someone steam inventory items!",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,18 @@
   },
   "keywords": [
     "Steam",
-    "inventory"
+    "inventory",
+    "steam-inventory-api",
+    "steamapi",
+    "steam market",
+    "steam",
+    "steam community",
+    "steam-get-inventory",
+    "nodejs steam",
+    "steam modules",
+    "steam-api",
+    "steam-market-pricing",
+    "steam-inventory"
   ],
   "author": "OlleThunberg <olle.thunberg03@gmail.com>",
   "license": "MIT",
