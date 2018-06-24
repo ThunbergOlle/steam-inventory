@@ -10,59 +10,90 @@ npm install get-steam-inventory --save
 ```js
 const steaminventory = require('get-steam-inventory');
 ```
+
+**VERSION 1.1 CHANGED THE WAY THE MODULE RESPONDS**
+
+We recommend reading the [docs]() on what's changed if you are plannig to update.
+
 ## Methods
 ```js
-steaminventory.getinventory(appid, steamid, function(err, callback){});
+steaminventory.getinventory(appid, steamid, function(err, callback){}, contextid);
 ```
-
-
+- appid: This is the [appid](https://steamdb.info/apps/) for the game that you want to load the inventory items for.
+- steamid: This is the [steam64](https://steamid.io/lookup/) id of the user that you want to load.
+- callback:
+    - err: This is if you get an error back.
+    - data: This is the response from the steamservers.
+- contextid: Context id is an id set by the game. For valve games it's usually 2.
+#### Callbacks
+- data.raw: Raw information recieved from the servers.
+- data.items: All the information about the items. (Like icon urls, descriptions, name colors ect)
+- data.marketnames: All the market names of the items in the inventory returned as a javascript object.
+- data.assets: All the information about the assets in the inventory
+- data.assetids: Every assetid in the inventory
 ## Examples
 
-### Simple Example
+### Get the item names
 ```js
 const steaminventory = require('get-steam-inventory');
 var steamid = '76561198089544929'; //Set up a variable for the steam64 id.
-steaminventory.getinventory(730, steamid, function(err, data){ //Making the request. 730 is the APPID, Steamid is already declared. Has a callback named 'data'
-    if(err) throw err; //If we get an error then display it.
-    console.log(data.body.descriptions); //Log everything we recieved in the data variable.
-});
+steaminventory.getinventory(730, steamid, function(err, data){
+    var marketnames = data.marketnames;
+    console.log(marketnames);
+}, '2');
 ```
 **Output**
 ```js
-    appid: 730,
-    classid: '1602391316',
-    instanceid: '2081167898',
-    currency: 0,
-    background_color: '', 
-    // LOTS OF MORE (AROUND 20 MORE LINES OF INFORMATION)
+[ 'Sealed Graffiti | NaCl (Shark White)',
+  'Glove Case',
+  'Gamma 2 Case',
+  'Chroma 2 Case',
+  'AND LOTS OF MORE INFORMATION OR NAMES :)']
 ```
 Well, using that example may not be the best thing if you are trying to get something useful out of it.
 We recommend this instead:
 
-### Recommended Example
+### Get raw
 ```js
 const steaminventory = require('get-steam-inventory');
 var steamid = '76561198089544929';//Set up a variable for the steam64 id.
-steaminventory.getinventory(730, steamid, function(err, data){//Making the request. 730 is the APPID, Steamid is already declared. Has a callback named 'data'
-    if(err) throw err; //Display errors if we recieve them.
-    var items = data.body.descriptions; //Sets up variable for all the information that we recieved.
-    for (var i = 0; i < items.length; i++){ //Makes a loop for every index in 'items' variable.
-        console.log(items[i].market_hash_name); //Logs it into the console.
-    }
+steaminventory.getinventory(730, steamid, function(err, data){
+    console.log(data.raw);
 });
 //This one logs EVERY name of the items in the inventory.
 ```
 **Output**
+```js
+{ appid: 730,
+       classid: '1989274437',
+       instanceid: '302028390',
+       currency: 0,
+       background_color: '',
+       icon_url: 'IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdB2ozio1RrlIWFK3Uf
 ```
-Graffiti | Noscope (SWAT Blue)
-Graffiti | Rage Mode (SWAT Blue)
-Operation Hydra Challenge Coin
-Graffiti | Popdog (Dust Brown)
-Graffiti | Sheriff (Blood Red)
-Graffiti | Bling (Blood Red)
-Tec-9 | Urban DDPAT (Battle-Scarred)
+### Get assets
+```js
+const steaminventory = require('get-steam-inventory');
+var steamid = '76561198089544929';//Set up a variable for the steam64 id.
+steaminventory.getinventory(730, steamid, function(err, data){
+    console.log(data.assets);
+});
+//This one logs EVERY name of the items in the inventory.
+```
+**Output**
+```js
+{ appid: 730,
+    contextid: '2',
+    assetid: '13106527064',
+    classid: '1989315922',
+    instanceid: '302028390',
+    amount: '1' },
+  { appid: 730,
+    contextid: '2',
 ```
 
+### Contribute
+Feel free to open pullrequests or issues on the [github](https://github.com/ThunbergOlle/steam-inventory) page.
 ## License
 MIT License
 
