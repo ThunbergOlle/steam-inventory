@@ -69,7 +69,7 @@ steaminventory.getinventory(730, steamid, function(err, data){
        instanceid: '302028390',
        currency: 0,
        background_color: '',
-       icon_url: 'IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdB2ozio1RrlIWFK3Uf
+       icon_url: 'IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdB2ozio1RrlIWFK3Uf'
 ```
 ### Get assets
 ```js
