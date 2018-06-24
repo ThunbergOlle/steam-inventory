@@ -17,7 +17,7 @@ We recommend reading the [docs]() on what's changed if you are plannig to update
 
 ## Methods
 ```js
-steaminventory.getinventory(appid, steamid, function(err, callback){}, contextid);
+steaminventory.getinventory(appid, steamid, callback, contextid);
 ```
 - appid: This is the [appid](https://steamdb.info/apps/) for the game that you want to load the inventory items for.
 - steamid: This is the [steam64](https://steamid.io/lookup/) id of the user that you want to load.
