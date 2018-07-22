@@ -11,9 +11,9 @@ npm install get-steam-inventory --save
 const steaminventory = require('get-steam-inventory');
 ```
 
-**VERSION 1.1 CHANGED THE WAY THE MODULE RESPONDS**
+**Please update to version 1.1.2, major bug fixed!**
 
-We recommend reading the [docs]() on what's changed if you are plannig to update.
+Have you got a question? Please submit an issue [here](https://github.com/ThunbergOlle/steam-inventory/issues).
 
 ## Methods
 ```js
@@ -40,7 +40,7 @@ var steamid = '76561198089544929'; //Set up a variable for the steam64 id.
 steaminventory.getinventory(730, steamid, function(err, data){
     var marketnames = data.marketnames;
     console.log(marketnames);
-}, '2');
+}, 2);
 ```
 **Output**
 ```js
@@ -59,7 +59,7 @@ const steaminventory = require('get-steam-inventory');
 var steamid = '76561198089544929';//Set up a variable for the steam64 id.
 steaminventory.getinventory(730, steamid, function(err, data){
     console.log(data.raw);
-});
+}, 2);
 //This one logs EVERY name of the items in the inventory.
 ```
 **Output**
