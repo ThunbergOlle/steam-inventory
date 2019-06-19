@@ -11,21 +11,18 @@ npm install get-steam-inventory --save
 const steaminventory = require('get-steam-inventory');
 ```
 
-**Please update to version 1.1.2, major bug fixed!**
+**Versions before 2.0 doesn't support promises.**
 
 Have you got a question? Please submit an issue [here](https://github.com/ThunbergOlle/steam-inventory/issues).
 
 ## Methods
 ```js
-steaminventory.getinventory(appid, steamid, callback, contextid);
+steaminventory.getinventory(appid, steamid, contextid);
 ```
 - appid: This is the [appid](https://steamdb.info/apps/) for the game that you want to load the inventory items for.
 - steamid: This is the [steam64](https://steamid.io/lookup/) id of the user that you want to load.
-- callback:
-    - err: This is if you get an error back.
-    - data: This is the response from the steamservers.
 - contextid: Context id is an id set by the game. For valve games it's usually 2.
-#### Callbacks
+#### Data resolve
 - data.raw: Raw information recieved from the servers.
 - data.items: All the information about the items. (Like icon urls, descriptions, name colors ect)
 - data.marketnames: All the market names of the items in the inventory returned as a javascript object.
@@ -35,12 +32,12 @@ steaminventory.getinventory(appid, steamid, callback, contextid);
 
 ### Get the item names
 ```js
-const steaminventory = require('get-steam-inventory');
-var steamid = '76561198089544929'; //Set up a variable for the steam64 id.
-steaminventory.getinventory(730, steamid, function(err, data){
-    var marketnames = data.marketnames;
-    console.log(marketnames);
-}, 2);
+const steaminventory = require('./index.js');
+const steamid = '76561198089544929';
+steaminventory.getinventory(730, steamid, '2').then(data => {
+    console.log(data.marketnames);
+}).catch(err => console.log(err));
+
 ```
 **Output**
 ```js
@@ -55,11 +52,11 @@ We recommend this instead:
 
 ### Get raw
 ```js
-const steaminventory = require('get-steam-inventory');
-var steamid = '76561198089544929';//Set up a variable for the steam64 id.
-steaminventory.getinventory(730, steamid, function(err, data){
+const steaminventory = require('./index.js');
+const steamid = '76561198089544929';
+steaminventory.getinventory(730, steamid, '2').then(data => {
     console.log(data.raw);
-}, 2);
+}).catch(err => console.log(err));
 //This one logs EVERY name of the items in the inventory.
 ```
 **Output**
@@ -73,11 +70,11 @@ steaminventory.getinventory(730, steamid, function(err, data){
 ```
 ### Get assets
 ```js
-const steaminventory = require('get-steam-inventory');
-var steamid = '76561198089544929';//Set up a variable for the steam64 id.
-steaminventory.getinventory(730, steamid, function(err, data){
+const steaminventory = require('./index.js');
+const steamid = '76561198089544929';
+steaminventory.getinventory(730, steamid, '2').then(data => {
     console.log(data.assets);
-});
+}).catch(err => console.log(err));
 //This one logs EVERY name of the items in the inventory.
 ```
 **Output**
