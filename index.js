@@ -12,7 +12,7 @@ exports.getinventory = (appid, steamid, contextid, tradeable) => {
             contextid = parseInt(contextid);
         }
         if (typeof tradeable !== "boolean") {
-            tradeable = false
+            tradeable = false;
         }
         request({
             uri: `/inventory/${steamid}/${appid}/${contextid}`,
