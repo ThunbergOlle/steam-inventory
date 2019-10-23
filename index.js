@@ -11,6 +11,9 @@ exports.getinventory = (appid, steamid, contextid, tradeable) => {
         if (typeof contextid === 'string') {
             contextid = parseInt(contextid);
         }
+        if (typeof tradeable !== "boolean") {
+            tradeable = false
+        }
         request({
             uri: `/inventory/${steamid}/${appid}/${contextid}`,
             baseUrl: 'https://steamcommunity.com/',
