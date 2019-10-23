@@ -40,7 +40,7 @@ exports.getinventory = (appid, steamid, contextid, tradeable) => {
                 return reject("Couldn't find any items in the inventory of the appid you set. :(");
             }
             if (tradeable) {
-                data.items = date.items.filter((x) => x.tradable === 1);
+                data.items = data.items.filter((x) => x.tradable === 1);
             }
             if (err) return reject(err);
             resolve(data);
