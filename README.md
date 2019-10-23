@@ -17,11 +17,12 @@ Have you got a question? Please submit an issue [here](https://github.com/Thunbe
 
 ## Methods
 ```js
-steaminventory.getinventory(appid, steamid, contextid);
+steaminventory.getinventory(appid, steamid, contextid, tradeable);
 ```
 - appid: This is the [appid](https://steamdb.info/apps/) for the game that you want to load the inventory items for.
 - steamid: This is the [steam64](https://steamid.io/lookup/) id of the user that you want to load.
 - contextid: Context id is an id set by the game. For valve games it's usually 2.
+- tradeable: This a boolean to filter the items which can be traded.
 #### Data resolve
 - data.raw: Raw information recieved from the servers.
 - data.items: All the information about the items. (Like icon urls, descriptions, name colors ect)
@@ -34,7 +35,7 @@ steaminventory.getinventory(appid, steamid, contextid);
 ```js
 const steaminventory = require('./index.js');
 const steamid = '76561198089544929';
-steaminventory.getinventory(730, steamid, '2').then(data => {
+steaminventory.getinventory(730, steamid, '2', true).then(data => {
     console.log(data.marketnames);
 }).catch(err => console.log(err));
 
@@ -54,7 +55,7 @@ We recommend this instead:
 ```js
 const steaminventory = require('./index.js');
 const steamid = '76561198089544929';
-steaminventory.getinventory(730, steamid, '2').then(data => {
+steaminventory.getinventory(730, steamid, '2', true).then(data => {
     console.log(data.raw);
 }).catch(err => console.log(err));
 //This one logs EVERY name of the items in the inventory.
@@ -72,7 +73,7 @@ steaminventory.getinventory(730, steamid, '2').then(data => {
 ```js
 const steaminventory = require('./index.js');
 const steamid = '76561198089544929';
-steaminventory.getinventory(730, steamid, '2').then(data => {
+steaminventory.getinventory(730, steamid, '2', true).then(data => {
     console.log(data.assets);
 }).catch(err => console.log(err));
 //This one logs EVERY name of the items in the inventory.
